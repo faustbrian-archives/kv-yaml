@@ -1,6 +1,6 @@
 // tslint:disable: no-unsafe-any
 import { StoreSync as AbstractStore } from "@konceiver/kv-file";
-import { readFileSync, writeFileSync } from "fs-extra";
+import { ensureFileSync, readFileSync, writeFileSync } from "fs-extra";
 import { safeDump, safeLoad } from "js-yaml";
 
 export class StoreSync<K, T> extends AbstractStore<K, T> {
@@ -8,13 +8,20 @@ export class StoreSync<K, T> extends AbstractStore<K, T> {
 		return new StoreSync<K, T>(new Map<K, T>(), uri);
 	}
 
-	// @ts-ignore
-	protected dump(rows: Record<K, T>): void {
-		writeFileSync(this.uri, safeDump(rows));
+	protected dump(): void {
+		writeFileSync(this.uri, safeDump(this.all()));
 	}
 
 	protected load(): void {
-		for (const [key, value] of Object.entries(safeLoad(readFileSync(this.uri, "utf8")))) {
+		ensureFileSync(this.uri);
+
+		const content = safeLoad(readFileSync(this.uri, "utf8"));
+
+		if (content === undefined) {
+			return;
+		}
+
+		for (const [key, value] of Object.entries(content)) {
 			// @ts-ignore
 			this.put(key, value);
 		}
