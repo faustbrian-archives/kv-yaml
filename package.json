@@ -27,14 +27,14 @@
 	],
 	"dependencies": {
 		"@konceiver/kv-file": "^1.2.0",
-		"fs-extra": "^9.0.1",
-		"js-yaml": "^3.14.1"
+		"fs-extra": "^9.1.0",
+		"js-yaml": "^4.1.0"
 	},
 	"devDependencies": {
 		"@konceiver/kv-test-suite": "^1.0.0",
-		"@konceiver/tease": "^2.0.0",
-		"@types/fs-extra": "^9.0.5",
-		"@types/js-yaml": "^3.12.5"
+		"@konceiver/tease": "^2.0.1",
+		"@types/fs-extra": "^9.0.11",
+		"@types/js-yaml": "^4.0.0"
 	},
 	"types": "dist/index"
 }
