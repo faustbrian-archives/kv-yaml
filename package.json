@@ -33,8 +33,8 @@
 	"devDependencies": {
 		"@konceiver/kv-test-suite": "^1.0.0",
 		"@konceiver/tease": "^2.0.1",
-		"@types/fs-extra": "^9.0.11",
-		"@types/js-yaml": "^4.0.1"
+		"@types/fs-extra": "^9.0.12",
+		"@types/js-yaml": "^4.0.2"
 	},
 	"types": "dist/index"
 }
